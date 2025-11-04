@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hall Booking Form</title>
+  <style>
+   body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  width: 90%;
+  max-width: 650px;
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 5px 5px 12px 12px rgba(0,0,0,0.1);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 28px;
+}
+
+input,
+select,
+button {
+  width: 100%;
+  padding: 14px 1px;
+  margin: 12px 0;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 17px;
+}
+
+button {
+  background-color: #0078d7;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #005fa3;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 25px 20px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  input,
+  select,
+  button {
+    font-size: 16px;
+    padding: 12px;
+  }
+}
+
+.back-button {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            padding: 10px 15px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .back-button:hover {
+            background-color: #2980b9;
+        }
+
+  </style>
+</head>
+<body>
+  <a href="javascript:history.back()" class="back-button">← Back</a>
+
+  <div class="container">
+    <h2>Hall Booking Form</h2>
+    <form action="hall_booking.php" method="POST">
+      <input type="text" name="name" placeholder="Full Name" required />
+      <input type="email" name="email" placeholder="Email Address" required />
+      <input type="text" name="contact" placeholder="Contact Number" required pattern="[0-9]{10}" />
+      <input type="number" name="persons" id="persons" placeholder="No. of Persons" required min="1" />
+
+      <select name="hall_type" id="hall_type" required onchange="updatePrice()">
+        <option value="">Select Hall Type</option>
+        <option value="Engagement">Engagement</option>
+        <option value="Marriage">Marriage</option>
+        <option value="Marriage Anniversary">Marriage Anniversary</option>
+        <option value="Birthday">Birthday</option>
+        <option value="Mundan">Mundan</option>
+        <option value="Meeting">Meeting</option>
+        <option value="Family Function">Family Function</option>
+        <option value="Personal Work">Personal Work</option>
+      </select>
+
+      <input type="text" name="price" id="price" placeholder="Price" readonly required />
+      <input type="date" name="date" required />
+
+      <button type="submit">Book Now</button>
+    </form>
+  </div>
+
+  <script>
+    function updatePrice() {
+      const hallType = document.getElementById("hall_type").value;
+      const priceField = document.getElementById("price");
+      const prices = {
+        "Engagement": 50000,
+        "Marriage": 150000,
+        "Marriage Anniversary": 20000,
+        "Birthday": 15000,
+        "Mundan": 25000,
+        "Meeting": 75000,
+        "Family Function": 30000,
+        "Personal Work": "According to work"
+      };
+      priceField.value = prices[hallType] || "";
+    }
+  </script>
+</body>
+</html>

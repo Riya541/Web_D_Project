@@ -1,0 +1,172 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* No vertical scrolling */
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Main Header */
+.main-header {
+    background-color: #333;
+    color: white;
+    position: relative;
+    padding: 10px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+/* Dropdown in top-left corner */
+.main-header .dropdown {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+}
+
+/* Dropdown Button */
+.dropbtn {
+    background-color: #222;
+    color: white;
+    padding: 10px 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Dropdown Content */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 40px;
+    left: 0;
+    background-color: #333;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+    border-radius: 4px;
+}
+
+.dropdown-content li {
+    list-style: none;
+}
+
+.dropdown-content li a {
+    color: white;
+    padding: 10px 16px;
+    display: block;
+    text-decoration: none;
+}
+
+.dropdown-content li a:hover {
+    background-color: #444;
+    color: #f9a825;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Profile and Site Title Centered */
+.top-header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.top-header-content .profile-pic img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid white;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.site-title {
+    font-size: 24px;
+    text-align: center;
+}
+
+/* Slider */
+.slider {
+    width: 100vw;
+    height: calc(100vh - 160px); /* Adjust height to fit the remaining space between header and footer */
+    overflow: hidden;
+    position: relative;
+    flex-grow: 1; /* Allow slider to take remaining space */
+}
+
+.slides {
+    display: flex;
+    transition: transform 1s ease-in-out;
+    width: calc(100vw * 3); /* Change this if the number of slides changes */
+    height: 100%;
+}
+
+.slide {
+    width: 100vw;
+    height: 100%;
+    flex-shrink: 0;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Footer */
+footer {
+    background-color: #000; /* Black background */
+    color: #f4f4f4;          /* Light text */
+    text-align: center;
+    padding: 20px 10px;
+    height: 60px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    flex-shrink: 0;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+    .site-title {
+        font-size: 20px;
+        text-align: center;
+    }
+
+    .dropbtn {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+
+    .dropdown-content {
+        min-width: 140px;
+    }
+
+    .top-header-content .profile-pic img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .slider {
+        height: calc(100vh - 120px); /* Adjust height for smaller screens */
+    }
+
+    .slide img {
+        object-fit: cover;
+    }
+}

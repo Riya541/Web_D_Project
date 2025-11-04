@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Header Only</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(-45deg, #fceabb, #f8b500, #e0c3fc, #8ec5fc);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+    }
+
+    @keyframes gradientBG {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    /* Main Header */
+    .main-header {
+      background-color: #333;
+      color: white;
+      position: relative;
+      padding: 10px 20px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    .main-header .dropdown {
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin-top: 8px;
+    }
+
+    .dropbtn {
+      background-color: #222;
+      color: white;
+      padding: 10px 16px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      margin-left: 5px;
+    }
+
+    .dropbtn:hover {
+      background-color: #2e2e2e;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #333;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+      z-index: 1;
+    }
+
+    .dropdown-content li {
+      list-style: none;
+    }
+
+    .dropdown-content li a {
+      color: white;
+      padding: 10px 16px;
+      display: block;
+      text-decoration: none;
+    }
+
+    .dropdown-content li a:hover {
+      background-color: #444;
+      color: #f9a825;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .top-header-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 10px;
+    }
+
+    .top-header-content .profile-pic img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: 2px solid white;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+
+    .site-title {
+      font-size: 24px;
+      text-align: center;
+    }
+
+    .main-content-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: calc(100vh - 140px);
+      padding: 20px;
+    }
+
+    .container {
+      background-color: rgba(10, 36, 58, 0.9);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 90%;
+      max-width: 500px;
+    }
+
+    /* Button Styling with Sparkle Effect */
+    button.btn {
+      background-color: rgb(185, 118, 29);
+      color: white;
+      padding: 15px 30px;
+      font-size: 16px;
+      border: 2px solid rgb(185, 118, 29);
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 15px 0;
+      transition: all 0.3s ease;
+      width: 80%;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    button.btn::before,
+    button.btn::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.6) 0%, transparent 80%);
+      opacity: 0;
+      pointer-events: none;
+      animation: sparkle 2s linear infinite;
+      z-index: 0;
+    }
+
+    button.btn::after {
+      animation-delay: 1s;
+    }
+
+    button.btn:hover {
+      background-color: transparent;
+      border-color: rgb(185, 118, 29);
+      color: rgb(185, 118, 29);
+    }
+
+    button.btn:hover::before,
+    button.btn:hover::after {
+      opacity: 1;
+    }
+
+    @keyframes sparkle {
+      0% {
+        transform: translate(-100%, -100%) rotate(0deg);
+      }
+      100% {
+        transform: translate(100%, 100%) rotate(360deg);
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      .site-title {
+        font-size: 20px;
+      }
+
+      .dropbtn {
+        font-size: 14px;
+        padding: 8px 12px;
+      }
+
+      .dropdown-content {
+        min-width: 140px;
+      }
+
+      .top-header-content .profile-pic img {
+        width: 50px;
+        height: 50px;
+      }
+    }
+
+    @media (min-width: 600px) {
+      button.btn {
+        width: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="main-header">
+    <div class="dropdown">
+      <button class="dropbtn">☰ Menu</button>
+      <ul class="dropdown-content">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="our_room.html">Rooms</a></li>
+        <li><a href="booking.html">Booking</a></li>
+        <li><a href="event.html">Event</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="1.html">Customer Support</a></li>
+      </ul>
+    </div>
+
+    <div class="top-header-content">
+      <div class="profile-pic">
+        <img src="Images/profile.jpg" alt="Profile">
+      </div>
+      <h1 class="site-title">PURUSHOTTAM MARRIAGE LAWN</h1>
+    </div>
+  </header>
+
+  <div class="main-content-wrapper">
+    <div class="container">
+      <h1 style="color: white;">Welcome to Our Booking Portal</h1>
+      <button onclick="window.location.href='room_booking.html'" class="btn">Room Booking</button>
+      <button onclick="window.location.href='hall_booking.html'" class="btn">Hall Booking</button>
+    </div>
+  </div>
+
+</body>
+</html>

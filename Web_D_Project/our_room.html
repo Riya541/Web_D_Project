@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Rooms</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Body */
+    html, body {
+      width: 100%;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Main Header */
+    .main-header {
+      background-color: #333;
+      color: white;
+      position: relative;
+      padding: 10px 20px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    /* Dropdown in top-left corner */
+    .main-header .dropdown {
+      position: absolute;
+      top: 10px;
+      left: 20px;
+    }
+
+    /* Dropdown Button */
+    .dropbtn {
+      background-color: #222;
+      color: white;
+      padding: 10px 16px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* Dropdown Content */
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 40px;
+      left: 0;
+      background-color: #333;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+      z-index: 1;
+      border-radius: 4px;
+    }
+
+    .dropdown-content li {
+      list-style: none;
+    }
+
+    .dropdown-content li a {
+      color: white;
+      padding: 10px 16px;
+      display: block;
+      text-decoration: none;
+    }
+
+    .dropdown-content li a:hover {
+      background-color: #444;
+      color: #f9a825;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    /* Profile and Site Title Centered */
+    .top-header-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .top-header-content .profile-pic img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: 2px solid white;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+
+    .site-title {
+      font-size: 24px;
+      text-align: center;
+    }
+
+    /* Center Heading and Description */
+    .section-content {
+      text-align: center;
+      margin-top: 40px; /* Added gap after header */
+      padding: 20px;
+    }
+
+    .section-content h2 {
+      color: #333;
+      font-size: 32px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .section-content p {
+      color: #666;
+      font-size: 16px;
+    }
+
+    /* Room Grid */
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      width: 90%;
+      max-width: 1200px;
+      margin: 20px auto;
+      padding-bottom: 20px;
+      height: 60vh;
+      overflow-y: auto;
+    }
+
+    .room-card {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      overflow: hidden;
+      border: double 1px #e2dede;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 400px; /* Doubled height of the card */
+    }
+
+    .image-wrapper {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      height: 200px; /* Keep a fixed height for images */
+      border-radius: 10px;
+    }
+
+    .image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease-in-out;
+      border-radius: 10px;
+    }
+
+    .image-wrapper:hover img {
+      transform: scale(1.1);
+    }
+
+    .room-card h3 {
+      margin-top: 10px;
+      font-size: 20px;
+    }
+
+    .room-card p {
+      margin-top: 10px;
+      color: #666;
+      font-size: 14px;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #000;
+      color: #f4f4f4;
+      text-align: center;
+      padding: 20px 10px;
+      height: 60px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    /* Responsive Styles */
+    @media screen and (max-width: 768px) {
+      .site-title {
+        font-size: 20px;
+        text-align: center;
+      }
+
+      .dropbtn {
+        font-size: 14px;
+        padding: 8px 12px;
+      }
+
+      .dropdown-content {
+        min-width: 140px;
+      }
+
+      .top-header-content .profile-pic img {
+        width: 50px;
+        height: 50px;
+      }
+
+      .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .grid-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="main-header">
+    <div class="dropdown">
+        <button class="dropbtn">☰ Rooms</button>
+        <ul class="dropdown-content">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="login.html">Admin Login</a></li>
+          <li><a href="our_room.html">Rooms</a></li>
+          <li><a href="booking.html">Booking</a></li>
+          <li><a href="event.html">Event</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="about.html">About Us</a></li>
+        </ul>
+    </div>
+
+    <div class="top-header-content">
+        <div class="profile-pic">
+            <img src="Images/profile.jpg" alt="Profile">
+        </div>
+        <h1 class="site-title">PURUSHOTTAM MARRIAGE LAWN</h1>
+    </div>
+  </header>
+
+  <div class="section-content">
+    <h2>Our Rooms</h2>
+    <p>Vibrant rooms and stylish hallway blending modern design with cozy comfort.</p>
+  </div>
+
+  <div class="grid-container">
+    <div class="room-card">
+      <div class="image-wrapper">
+        <img src="Images/4.jpg" alt="Room 1" />
+      </div>
+      <h3>Cozy Comfort Room</h3>
+      <p>The image shows a clean, simple bedroom with a wooden bed featuring a cushioned headboard. The bed is neatly arranged with white sheets, two pillows, and a green patterned blanket. The walls are blue.</p>
+    </div>
+
+    <div class="room-card">
+      <div class="image-wrapper">
+        <img src="Images/5.jpg" alt="Room 2" />
+      </div>
+      <h3>Modern Geometric Room</h3>
+      <p>This room features a modern wooden bed with a cushioned headboard and crisp white sheets. The vibrant red walls are decorated with silver geometric patterns, giving the space a bold, energetic vibe.</p>
+    </div>
+
+    <div class="room-card">
+      <div class="image-wrapper">
+        <img src="Images/6.jpg" alt="Room 3" />
+      </div>
+      <h3>Elegant Urban Retreat</h3>
+      <p>The room features a cozy bed with a floral blanket, teal-painted walls, and striking red curtains that let in natural light. Modern touches include geometric black accent walls and minimalist furniture.</p>
+    </div>
+
+    <div class="room-card">
+      <div class="image-wrapper">
+        <img src="Images/7.jpg" alt="Room 4" />
+      </div>
+      <h3>Serene Minimalist Room</h3>
+      <p>The room features clean white walls, a soft-toned bedspread, and colorful blankets. Large windows with patterned blue curtains let in natural light, while minimalistic black furniture gives the space a neat look.</p>
+    </div>
+
+    <div class="room-card">
+      <div class="image-wrapper">
+        <img src="Images/8.jpg" alt="Room 5" />
+      </div>
+      <h3>Chic Geometric Haven</h3>
+      <p>This room features a cozy wooden bed with a cushioned headboard and crisp white sheets. The dark textured walls with golden geometric lines add a bold, modern, and luxurious touch to the space.</p>
+    </div>
+
+    <div class="room-card">
+      <div class="image-wrapper">
+        <img src="Images/9.jpg" alt="Room 6" />
+      </div>
+      <h3>Golden Blossom Corridor</h3>
+      <p>This lively corridor features bold red accent walls decorated with intricate golden floral motifs. The hallway is complemented by patterned flooring and dark-colored doors, creating a striking and elegant visual pathway.</p>
+    </div>
+  </div>
+
+</body>
+</html>
